@@ -1,0 +1,422 @@
+@import "bootstrap/scss/bootstrap";
+@import "markdown";
+
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+}
+
+/* Default Tags */
+
+h1 {
+    font-family: 'NanumSquare';
+    font-weight: 800;
+}
+
+h2 {
+    font-family: 'NanumSquare';
+    font-weight: 600;
+}
+
+p {
+    font-size: 13pt;
+    font-family: 'NanumBarunGothic';
+}
+
+/* Globals */
+
+.no-drag {
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+
+.anchor {
+    display: block;
+    position: relative;
+    top: -150px;
+    visibility: hidden;
+}
+
+/* Colors */
+
+.btn-infinite {
+    color: #ffffff;
+    background-color: rgb(87, 228, 157) !important;
+    border-color: rgb(87, 228, 157) !important;
+}
+
+.btn-infinite:hover,
+.btn-infinite.hover,
+.btn-infinite:focus,
+.btn-infinite.focus,
+.btn-infinite:active,
+.btn-infinite.active {
+    color: #ffffff !important;
+    background-color: rgb(64, 216, 140) !important;
+    border-color: rgb(64, 216, 140) !important;
+}
+
+.btn-infinite:active {
+    box-shadow: none !important;
+}
+
+.btn-infinite:active:focus {
+    color: #ffffff !important;
+    background-color: rgb(30, 197, 114) !important;
+    border-color: rgb(30, 197, 114) !important;
+}
+
+
+
+
+.btn-azalea {
+    color: #ffffff;
+    background-color: rgb(254, 84, 147) !important;
+    border-color: rgb(254, 84, 147) !important;
+}
+
+.btn-azalea:hover,
+.btn-azalea.hover,
+.btn-azalea:focus,
+.btn-azalea.focus,
+.btn-azalea:active,
+.btn-azalea.active {
+    color: #ffffff !important;
+    background-color: rgb(235, 67, 129) !important;
+    border-color: rgb(235, 67, 129) !important;
+}
+
+.btn-azalea:active {
+    box-shadow: none !important;
+}
+
+.btn-azalea:active:focus {
+    color: #ffffff !important;
+    background-color: rgb(235, 67, 129) !important;
+    border-color: rgb(235, 67, 129) !important;
+}
+
+
+
+.text-infinite {
+    color: rgb(30, 197, 114);
+}
+
+.text-infinite:hover,
+.text-infinite.hover,
+.text-infinite:focus,
+.text-infinite.focus,
+.text-infinite:active,
+.text-infinite.active {
+    color: rgb(54, 170, 112) !important;
+}
+
+
+
+.Title-section-bg {
+    height: 320px;
+}
+
+.Title-gradient {
+    background-image: linear-gradient(120deg, #81f1ab 0%, #8aebee 100%);
+}
+
+.ct {
+    margin-bottom: 100px;
+}
+
+.Title-title {
+    font-weight: 800;
+    color: white;
+    font-family: "NanumSquare";
+    padding-top: 110px;
+}
+
+.Title-subtitle {
+    font-weight: 800;
+    color: white;
+    font-family: "NanumSquare";
+}
+
+.Header {
+    font-weight: 1000;
+    color: rgb(85, 85, 85);
+    font-size: 26pt;
+    font-family: "NanumSquare";
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.Botproject-card {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.Botproject-card-title {
+    font-family: "NanumSquare";
+    font-weight: 1000;
+    font-size: 18pt;
+}
+
+.Botproject-card-dsec {
+    font-family: "NanumBarunGothic";
+    justify-content: center;
+    align-items: center;
+}
+
+.Botproject-card-btn {
+    font-family: "NanumSquare";
+}
+
+.Botproject-card-link {
+    font-family: "NanumSquare";
+    margin-top: 5px;
+}
+
+/* Members */
+
+.Members-card {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+    width: 16rem;
+    border: none;
+}
+
+.Members-card-body {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.Members-card-title {
+    font-family: "NanumSquare";
+    font-weight: 800;
+    font-size: 18pt;
+}
+
+.Members-card-sub {
+    font-family: "NanumBarunGothic";
+    font-weight: bold;
+}
+
+.Members-card-desc {
+    font-family: "NanumBarunGothic";
+    font-size: 12pt;
+}
+
+/* Azalea */
+
+.Azalea-title-gradient {
+    background-image: linear-gradient(120deg, rgb(254, 84, 147) 0%, rgb(249, 125, 115) 100%);
+}
+
+.Azalea-intro-title {
+    margin-top: 5rem;
+}
+
+.Azalea-bottom-ct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+/* Bot Status */
+
+.Botstatus-title-gradient {
+    background-image: linear-gradient(120deg, #82b1fc 0%, #80f6ff 100%);
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.online {
+    background-color: limegreen;
+}
+.idle {
+    background-color: gold;
+}
+.dnd {
+    background-color: orangered;
+}
+.offline {
+    background-color: dimgray;
+}
+
+/* Footer */
+
+.Footer {
+    background-image: linear-gradient(120deg, #81f1bd 0%, #8aeedd 100%);
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    h4 {
+        font-family: 'NanumSquare';
+        font-weight: 1000;
+        color: darkslategrey;
+    }
+    h5 {
+        font-family: 'NanumBarunGothic';
+        font-weight: 600;
+        font-size: 13pt;
+    }
+    p {
+        font-family: 'NanumSquare';
+        font-weight: 800;
+        color: darkslategrey;
+    }
+    a {
+        color: darkslategrey;
+        font-family: 'NanumBarunGothic';
+        text-decoration: underline;
+    }
+}
+
+.Footer-copyright {
+    font-family: 'NanumBarunGothic';
+    font-size: 10pt;
+}
+
+/* Sidebar */
+.guide-sidebar {
+    padding: 0.75rem 1rem 0.75rem 1rem;
+    font-family: 'NanumBarunGothic';
+    margin-top: 45px;
+    margin-bottom: auto;
+    background-color: ghostwhite;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 5px -1px rgb(207, 207, 207);
+    a {
+        text-decoration: none;
+        display: block;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        color: darkslategrey;
+    }
+}
+
+/* Responsive */
+
+@include media-breakpoint-up(xs) {
+    .Title-subtitle {
+        font-size: 25px;
+    }
+
+    .Botproject-card-link {
+        display: flex;
+        margin-left: 0 !important;
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    .Title-section-bg {
+        height: 400px;
+    }
+
+    .Title-ct {
+        height: 400px;
+    }
+
+    .Title-title {
+        font-size: 8vw;
+    }
+
+    .Title-subtitle {
+        font-size: 4.2vw;
+    }
+
+    .Botproject-card {
+        max-width: 300px;
+    }
+
+    .Botproject-card-btn {
+        margin-bottom: 0.25rem;
+    }
+
+    .Botproject-card-link {
+        display: inline;
+        margin-left: 0.75rem !important;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .Title-section-bg {
+        height: 400px;
+    }
+
+    .Title-ct {
+        height: 400px;
+    }
+
+    .Title-subtitle {
+        font-size: 4vw;
+    }
+
+    .Title-title {
+        font-size: 8vw;
+    }
+
+    .Botproject-card {
+        max-width: 300px;
+    }
+    .Botproject-card-link {
+        display: inline;
+        margin-left: 0.75rem !important;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .Title-section-bg {
+        height: 500px;
+    }
+
+    .Title-ct {
+        height: 500px;
+    }
+
+    .Title-subtitle {
+        font-size: 40pt;
+    }
+
+    .Title-title {
+        font-size: 100pt;
+    }
+
+    .Botproject-card {
+        max-width: 435px;
+    }
+
+    .Botproject-img {
+        margin-left: 14px;
+        margin-right: -14px;
+    }
+
+    .Botproject-card-link {
+        display: inline;
+        margin-left: 0.75rem !important;
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .Botproject-card {
+        max-width: 500px;
+    }
+    .Botproject-card-link {
+        display: inline;
+        margin-left: 0.75rem !important;
+    }
+}
