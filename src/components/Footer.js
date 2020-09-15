@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
-
+import links from '../datas/links.json'
 
 export default class Home extends Component {
   render() {
@@ -11,10 +11,10 @@ export default class Home extends Component {
             <Row>
               <Col md={5} className="mt-md-0 mt-3">
                 <h4 className="text-uppercase">
-                  InfiniteTeam
+                  Aztra
                 </h4>
                 <p>
-                  무한한 미래를 만들어갑니다
+                  미래를 바꿀 디스코드 관리봇.
                 </p>
               </Col>
               <Col md={2}>
@@ -26,24 +26,21 @@ export default class Home extends Component {
                 </ul>
               </Col>
               <Col md={2}>
-                <h5>디스코드 봇</h5>
+                <h5>팀</h5>
                 <ul className="list-unstyled">
                   <li>
-                    <a href="/bots/azalea">Azalea</a>
+                    <a href={links.teamsite}>팀 홈페이지</a>
                   </li>
                 </ul>
               </Col>
-			  <Col md={2}>
+              <Col md={2}>
                 <h5>가이드</h5>
                 <ul className="list-unstyled">
                   <li>
-                    <a href="/guide/azalea">Azalea</a>
-                  </li>
-			      <li>
-                    <a href="/privacy">개인정보 처리방침</a>
+                    <a href={links.privacy}>개인정보 처리방침</a>
                   </li>
                 </ul>
-			  </Col>
+              </Col>
             </Row>
             <div className="Footer-copyright text-center">
               Copyright © 2020 InfiniteTeam All rights reserved.
