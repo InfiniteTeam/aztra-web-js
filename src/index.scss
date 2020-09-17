@@ -40,6 +40,11 @@ body {
     user-select: none;
 }
 
+.img-view-only {
+    border-radius: 10px;
+    pointer-events: none;
+}
+
 .anchor {
     display: block;
     position: relative;
@@ -49,6 +54,42 @@ body {
 
 
 /* Colors */
+.btn-aztra {
+    color: #ffffff;
+    background-color: #7061c9 !important;
+    border-color: #7061c9 !important;
+    outline: none;
+    box-shadow: none !important;
+}
+
+.btn-aztra:hover,
+.btn-aztra.hover,
+.btn-aztra:focus,
+.btn-aztra.focus,
+.btn-aztra:active,
+.btn-aztra.active {
+    color: #ffffff !important;
+    background-color: #6254af !important;
+    border-color: #6254af !important;
+    outline: none;
+    box-shadow: none !important;
+}
+
+.btn-aztra:active {
+    box-shadow: none !important;
+    outline: none;
+}
+
+.btn-aztra:active:focus {
+    color: #ffffff !important;
+    background-color: #6254af !important;
+    border-color: #6254af !important;
+    outline: none;
+    box-shadow: none !important;
+}
+
+
+
 .dropdown-menu-dark {
     .dropdown-menu {
         background-color: rgb(86, 85, 94) !important;
@@ -100,6 +141,8 @@ body {
     margin-bottom: 2rem;
 }
 
+/* Home */
+
 .Main-intro {
     h1 {
         font-size: 30pt;
@@ -108,8 +151,21 @@ body {
         font-size: 15pt;
         font-weight: lighter;
     }
-    padding-top: 320px;
-    padding-bottom: 320px;
+    padding-top: 250px;
+    padding-bottom: 250px;
+    text-align: center;
+    .logo {
+        width: 25%;
+        height: 25%;
+    }
+}
+
+.Main-button {
+    font-family: 'NanumSquare';
+    font-weight: 800;
+    margin-left: 20px;
+    margin-right: 20px;
+    min-width: 240px;
 }
 
 /* Footer */
