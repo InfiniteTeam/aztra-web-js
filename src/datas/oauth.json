@@ -1,0 +1,2 @@
+{
+    "discord_oauth2": "https://discord.com/api/oauth2/authorize?client_id=755654751777193996&redirect_uri=http%3A%2F%2Farpa.kro.kr%3A3000%2Fauth&response_type=code&scope=identify%20guilds"}

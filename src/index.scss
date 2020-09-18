@@ -155,8 +155,7 @@ body {
     padding-bottom: 250px;
     text-align: center;
     .logo {
-        width: 25%;
-        height: 25%;
+        max-width: 250px;
     }
 }
 
@@ -166,6 +165,7 @@ body {
     margin-left: 20px;
     margin-right: 20px;
     min-width: 240px;
+    margin-bottom: 30px;
 }
 
 /* Footer */

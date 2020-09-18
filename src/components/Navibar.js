@@ -11,7 +11,6 @@ export default class Navibar extends Component {
               <Navbar.Brand href="/" style={{
                 fontWeight: 500
               }}>
-
                 Aztra
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -24,9 +23,11 @@ export default class Navibar extends Component {
                     </NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
+                <Nav>
+                  <Nav.Link href="/login">로그인</Nav.Link>
+                </Nav>
               </Navbar.Collapse>
             </Container>
-
           </Navbar>
         </div>
       </>
