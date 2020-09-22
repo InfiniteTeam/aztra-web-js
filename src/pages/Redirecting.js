@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Redirecting extends Component {
-	render() {
-		window.location.assign(this.props.to)
-		return null
-	}
+export default class Redirecting extends React.Component {
+  render() {
+    window.location.assign(this.props.to)
+    return null
+  }
 }
