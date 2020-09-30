@@ -7,7 +7,7 @@ export default class Home extends Component {
     return (
       <>
         <Container fluid>
-          <Container fluid="sm" className="ct Intro-ct">
+          <Container fluid="sm" className="ct">
             <div className="Main-intro">
               <img src={logoinv} className="logo pb-3 img-view-only no-drag" alt="Aztra" />
               <h1 className="no-drag text-white">
