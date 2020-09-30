@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import axios from 'axios'
 
 export default class Auth extends Component {
   ProcessAuth = async () => {
