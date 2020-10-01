@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
-import { Home, Auth, NotFound, Redirecting } from './pages'
+import { Home, Auth, NotFound, Redirecting, Logout } from './pages'
 import oauth from './datas/oauth'
 import { Navibar, Footer, BaiscDashboard } from './components'
 import * as Dashboard from './pages/dashboard'
@@ -11,11 +11,12 @@ export default class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/login" render={() => <Redirecting to={oauth.discord_oauth2} />} />
+          <Route exact path="/logout" component={Logout} />
+          <Route exact path="/auth" component={Auth} />
           <Route>
             <Navibar />
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/auth" component={Auth} />
               <Route path="/dashboard">
                 <BaiscDashboard>
                   <Switch>

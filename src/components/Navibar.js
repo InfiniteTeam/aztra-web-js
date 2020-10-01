@@ -8,7 +8,7 @@ export default class Navibar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: {},
+      user: null,
       loginDone: false
     }
   }
@@ -20,10 +20,11 @@ export default class Navibar extends Component {
           Authorization: `Bearer ${token}`
         }
       })
+      
       this.setState({ user: res.data })
     }
     catch (e) {
-      this.setState({ user: {} })
+      this.setState({ user: null })
     }
     finally {
       this.setState({ loginDone: true })
@@ -31,9 +32,9 @@ export default class Navibar extends Component {
   }
 
   componentDidMount() {
+    console.log(localStorage.getItem('token'))
     const token = localStorage.getItem('token')
-    !token || this.getUserInfo(token)
-    console.log(this.state.user)
+    this.getUserInfo(token)
   }
   render() {
     const user = this.state.user
