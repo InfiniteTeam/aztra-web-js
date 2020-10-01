@@ -105,7 +105,7 @@ checkBrowsers(paths.appPath, isInteractive)
       webpack,
     });
     // Load proxy config
-    const proxySetting = process.env.NODE_PATH === 'production'
+    const proxySetting = process.env.NODE_ENV === 'production'
       ? require(paths.appPackageJson).proxy
       : require(paths.appPackageJson).devProxy;
     const proxyConfig = prepareProxy(
