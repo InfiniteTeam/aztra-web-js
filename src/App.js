@@ -7,6 +7,7 @@ import * as Dashboard from './pages/dashboard'
 
 export default class App extends Component {
   render() {
+    console.log(process.env.API_HOST)
     return (
       <BrowserRouter>
         <Switch>

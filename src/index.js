@@ -4,6 +4,11 @@ import './index.scss';
 import './dashboard.scss'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import urljoin from 'url-join'
+import dotenv from 'dotenv'
+import path from 'path'
+
+console.log(process.env)
 
 ReactDOM.render(
   <React.StrictMode>

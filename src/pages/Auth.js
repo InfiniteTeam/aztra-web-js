@@ -11,17 +11,18 @@ export default class Auth extends React.Component {
   ProcessAuth = async () => {
     var code = new URLSearchParams(this.props.location.search).get('code')
     localStorage.setItem('authcode', code)
-    await fetch(`/oauth2/token/?code=${code}`, {
-      method: "GET"
-    })
-      .then(res => res.json())
-      .then(res => {
-        localStorage.setItem('token', res.access_token)
-        this.setState({ done: true })
+    try {
+      let res = await axios.get(`${process.env.REACT_APP_API_HOST}/oauth2/token`, {
+        params: {
+          code: code
+        }
       })
-      .catch(e => {
-        console.error(e)
-      })
+      localStorage.setItem('token', res.data.access_token)
+      this.setState({ done: true })
+    }
+    catch (e) {
+      console.error(e)
+    }
   }
 
   async componentDidMount() {
