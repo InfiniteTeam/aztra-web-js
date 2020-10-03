@@ -7,7 +7,6 @@ import * as Dashboard from './pages/dashboard'
 
 export default class App extends Component {
   render() {
-    console.log(process.env.API_HOST)
     return (
       <BrowserRouter>
         <Switch>
@@ -15,7 +14,7 @@ export default class App extends Component {
           <Route exact path="/logout" component={Logout} />
           <Route exact path="/auth" component={Auth} />
           <Route>
-            <Navibar timestamp={new Date().toString()} />
+            <Navibar />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/servers" component={Dashboard.Servers} />

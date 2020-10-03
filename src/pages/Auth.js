@@ -1,4 +1,5 @@
 import React from 'react'
+import api from '../datas/api'
 import axios from 'axios'
 
 export default class Auth extends React.Component {
@@ -8,26 +9,27 @@ export default class Auth extends React.Component {
       done: false
     }
   }
+
   ProcessAuth = async () => {
     var code = new URLSearchParams(this.props.location.search).get('code')
     localStorage.setItem('authcode', code)
-    try {
-      let res = await axios.get(`${process.env.REACT_APP_API_HOST}/oauth2/token`, {
-        params: {
-          code: code
-        }
+    await axios.get(`${api}/oauth2/token`, {
+      params: {
+        code: code
+      }
+    })
+      .then(res => {
+        localStorage.setItem('token', res.data.access_token)
+        this.setState({ done: true })
       })
-      localStorage.setItem('token', res.data.access_token)
-      this.setState({ done: true })
-    }
-    catch (e) {
-      console.error(e)
-    }
+      .catch(e => {
+        console.error(e)
+      })
   }
 
   async componentDidMount() {
     await this.ProcessAuth()
-    window.location.assign('/')
+    !this.state.done || window.location.assign('/')
   }
 
   render() {

@@ -156,7 +156,5 @@
   "bugs": {
     "url": "https://github.com/InfiniteTeam/Aztra-Web/issues"
   },
-  "homepage": "./",
-  "proxy": "https://api.aztra.inft.kr",
-  "devProxy": "http://localhost:3001"
+  "homepage": "./"
 }
