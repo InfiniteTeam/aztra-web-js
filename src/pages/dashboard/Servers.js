@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Card, Row, Col, Button, DropdownButton, Dropdown } from 'react-bootstrap'
+import { Container, Card, Row, Col } from 'react-bootstrap'
 import axios from 'axios'
 import urljoin from 'url-join'
 import oauth2 from '../../datas/oauth'
@@ -44,27 +44,13 @@ export default class Servers extends Component {
       })
       .map((one, index) => (
         <Card key={index} bg="dark" text="light" className="Dashboard-Servers-Card" style={{
-          animationDelay: `${index * 80}ms`
+          animationDelay: `${index*80}ms`
         }}>
-          <Card.Body style={{ padding: 'unset', fontSize: '12pt' }}>
-            <Container>
-              <Row>
-                <Col>
-                  <div style={{ height: 40, display: 'table-cell', verticalAlign: 'middle' }}>
-                    <img alt="" src={`https://cdn.discordapp.com/icons/${one.id}/${one.icon}.png`} style={{ maxHeight: 40, marginRight: 15, borderRadius: '70%' }} />
-                    {one.name}
-                  </div>
-                </Col>
-                <Col style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-                  <Button variant="secondary ml-2" size="sm">대시보드</Button>
-                  <DropdownButton variant="dark ml-2" size="sm">
-                    <Dropdown.Item>
-                      서버 통계 확인
-                    </Dropdown.Item>
-                  </DropdownButton>
-                </Col>
-              </Row>
-            </Container>
+          <Card.Body style={{padding: 'unset', fontSize: '12pt'}}>
+            <div style={{height: 40, display: 'table-cell', verticalAlign: 'middle'}}>
+              <img alt="" src={`https://cdn.discordapp.com/icons/${one.id}/${one.icon}.png`} style={{maxHeight: 40, marginRight: 15, borderRadius: '70%'}}/>
+              {one.name}
+            </div>
           </Card.Body>
         </Card>
       ))
@@ -72,13 +58,13 @@ export default class Servers extends Component {
     return (
       <>
         <Container fluid="sm" className="text-center">
-          <h2 style={{ color: "whitesmoke", marginTop: 120, marginBottom: 120, fontSize: '30pt' }}>서버를 선택하세요</h2>
+          <h2 style={{color: "whitesmoke", marginTop: 120, marginBottom: 120, fontSize: '30pt'}}>서버를 선택하세요</h2>
         </Container>
-        <Container fluid="sm" style={{ marginBottom: 160 }}>
+        <Container fluid="sm" style={{marginBottom: 160}}>
           {
             this.state.fetchDone
               ? guild_cards
-              : <h4 style={{ color: 'whitesmoke', paddingTop: 100, paddingBottom: 300 }} className="text-center">서버 목록을 가져오고 있습니다...</h4>
+              : <h4 style={{color: 'whitesmoke', paddingTop: 100, paddingBottom: 300}} className="text-center">서버 목록을 가져오고 있습니다...</h4>
           }
         </Container>
       </>
