@@ -13,18 +13,19 @@ export default class Navibar extends Component {
     }
   }
 
-  getUserInfo = async (token) => {
+  getUserInfo = async token => {
     try {
       let res = await axios.get(urljoin(oauth2.api_endpoint, '/users/@me'), {
         headers: {
           Authorization: `Bearer ${token}`
         }
       })
-      
       this.setState({ user: res.data })
+      localStorage.setItem('cached_user', JSON.stringify(res.data))
     }
     catch (e) {
       this.setState({ user: null })
+      localStorage.removeItem('cached_user')
     }
     finally {
       this.setState({ loginDone: true })
@@ -34,10 +35,11 @@ export default class Navibar extends Component {
   componentDidMount() {
     console.log(localStorage.getItem('token'))
     const token = localStorage.getItem('token')
-    this.getUserInfo(token)
+    !token || this.getUserInfo(token)
   }
+
   render() {
-    const user = this.state.user
+    const user = this.state.user || JSON.parse(localStorage.getItem('cached_user'))
     return (
       <>
         <div style={{ paddingTop: 65.94 }}>
@@ -51,11 +53,16 @@ export default class Navibar extends Component {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                  <Nav.Link href="/">홈</Nav.Link>
-                  <NavDropdown title="기능들" id="basic-nav-dropdown" className="dropdown-menu-dark">
-                    <NavDropdown.Item href="/bots/Azalea" className="dropdown-item-dark">
+                  <Nav.Link href="/" className="Navlink">
+                    홈
+                  </Nav.Link>
+                  <Nav.Link href="/servers" className="Navlink">
+                    대시보드
+                  </Nav.Link>
+                  <NavDropdown title={<span className="Navlink">기능들</span>} id="basic-nav-dropdown" className="dropdown-menu-dark">
+                    <NavDropdown.Item className="dropdown-item-dark" href="/bots/Azalea">
                       환영 메시지
-                      </NavDropdown.Item>
+                    </NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
                 <Nav>
@@ -64,21 +71,25 @@ export default class Navibar extends Component {
                       ?
                       <>
                         <div style={{
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center'
+                          justifyContent: 'left',
+                          display: 'flex'
                         }}>
                           <img alt={user.username} src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`} style={{
-                            maxHeight: 30,
-                            borderRadius: '70%',
-                            overflow: 'hidden'
+                            maxHeight: 32,
+                            borderRadius: '700%',
+                            overflow: 'hidden',
+                            marginRight: 5,
+                            marginTop: 5
                           }} />
+                          <NavDropdown title={`${user.username}#${user.discriminator}`} id="basic-nav-dropdown" className="dropdown-menu-dark" style={{
+                            fontSize: '12.5pt'
+                          }}>
+
+                            <NavDropdown.Item className="dropdown-item-dark" href="/logout">
+                              로그아웃
+                            </NavDropdown.Item>
+                          </NavDropdown>
                         </div>
-                        <NavDropdown title={`${user.username}#${user.discriminator}`} id="basic-nav-dropdown" className="dropdown-menu-dark">
-                          <NavDropdown.Item href="/logout" className="dropdown-item-dark">
-                            로그아웃
-                          </NavDropdown.Item>
-                        </NavDropdown>
                       </>
                       : <Nav.Link href="/login">로그인</Nav.Link>
                   }

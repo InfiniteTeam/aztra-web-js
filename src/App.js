@@ -14,9 +14,10 @@ export default class App extends Component {
           <Route exact path="/logout" component={Logout} />
           <Route exact path="/auth" component={Auth} />
           <Route>
-            <Navibar />
+            <Navibar timestamp={new Date().toString()} />
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route path="/servers" component={Dashboard.Servers} />
               <Route path="/dashboard">
                 <BaiscDashboard>
                   <Switch>
