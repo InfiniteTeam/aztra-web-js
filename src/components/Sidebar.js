@@ -9,14 +9,20 @@ export default class Main extends Component {
         <Nav 
           className="col-md-12 d-none d-md-block"
           style={{
-            paddingRight: 0
+            paddingRight: 0,
           }}
         >
-          <Nav.Item style={{fontSize: '1.05rem', fontWeight: 600, paddingBottom: 10, paddingLeft: 2}}>
+          <Nav.Item style={{
+            fontSize: '1rem',
+            fontWeight: 600,
+            paddingBottom: 10,
+            paddingLeft: 2,
+            display: 'flex'
+          }}>
             <img 
               alt="" 
               src={`https://cdn.discordapp.com/icons/${guild?.id}/${guild?.icon}.png`} 
-              style={{ maxHeight: 42, marginRight: 15, borderRadius: '70%' }} 
+              style={{ maxHeight: 40, marginRight: 15, borderRadius: '70%' }} 
             />
             {guild?.name}
           </Nav.Item>
@@ -29,11 +35,13 @@ export default class Main extends Component {
           <Nav.Item>
             <Nav.Link>봇 세부 권한 관리</Nav.Link>
           </Nav.Item>
-          <Nav.Item>
-            <Nav.Link disabled>
-              Disabled
-            </Nav.Link>
-          </Nav.Item>
+          {
+            Array.from(Array(25).keys()).map((one, index) => (
+              <Nav.Item key={index}>
+                <Nav.Link>옵션 {index+1}</Nav.Link>
+              </Nav.Item>
+            ))
+          }
         </Nav>
       </>
     )

@@ -9,7 +9,7 @@ import urljoin from 'url-join'
 import oauth2 from '../datas/oauth'
 import { Permissions } from 'discord.js'
 
-export default class BasicDashboard extends Component {
+export default class DashboardRoute extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -56,12 +56,12 @@ export default class BasicDashboard extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col xl={2} lg={3} md={3} sm={3} className="Basicdashboard-sidebar">
-            <Sidebar guild={this.state.guild} />
+          <Col xl={2} lg={3} md={3} sm={3} className="Dashboardroute-sidebar">
+            <div className="Dashboardroute-sidebar-body">
+              <Sidebar guild={this.state.guild}/>
+            </div>
           </Col>
-          <Col xl={10} lg={9} md={9} sm={9} style={{
-            color: 'white'
-          }}>
+          <Col xl={10} lg={9} md={9} sm={9} className="Dashboardroute-body">
             {
               this.state.fetchDone 
                 ? <Switch>
