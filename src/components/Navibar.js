@@ -42,7 +42,7 @@ export default class Navibar extends Component {
     const user = this.state.user || JSON.parse(localStorage.getItem('cached_user'))
     return (
       <>
-        <div style={{ paddingTop: 65.94 }}>
+        <div style={{ paddingTop: 57 }}>
           <Navbar bg="dark" expand="sm" fixed="top" className="nav-item no-drag navbar-dark">
             <Container fluid="sm">
               <Navbar.Brand href="/" style={{

@@ -1,5 +1,5 @@
 .Dashboard-Servers-Card {
-    padding: 8px 0px 8px 18px;
+    padding: 8px 0px 8px 0px;
     border: none;
     margin-bottom: 8px;
 
@@ -46,5 +46,20 @@
         to {
             opacity: 1;
         }
+    }
+
+    .dropdown-menu {
+        z-index: 99999 !important;
+        position: fixed !important;
+    }
+}
+
+.Basicdashboard-sidebar {
+    background-color:  rgb(61, 67, 73);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: whitesmoke;
+    a {
+        color: white;
     }
 }

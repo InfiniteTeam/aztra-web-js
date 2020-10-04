@@ -23,6 +23,7 @@ export default class Auth extends React.Component {
         this.setState({ done: true })
       })
       .catch(e => {
+        localStorage.setItem('token', null)
         console.error(e)
       })
   }
