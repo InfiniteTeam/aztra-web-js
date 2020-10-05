@@ -17,7 +17,8 @@ export default class Main extends Component {
             fontWeight: 600,
             paddingBottom: 10,
             paddingLeft: 2,
-            display: 'flex'
+            display: 'flex',
+            alignItems: 'center'
           }}>
             <img 
               alt="" 
