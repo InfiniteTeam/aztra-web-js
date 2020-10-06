@@ -78,11 +78,14 @@ export default class DashboardRoute extends Component {
     return (
       <Container fluid>
         <Row>
+          {/* 대시보드 사이드바 */}
           <Col xl={2} lg={3} md={3} sm={4} className="Dashboardroute-sidebar">
+
             <Container className="pl-0 pr-0 pb-1" id="sidebar-header">
+              {/* 사이드바 헤더 */}
               <Row>
                 <Col xs={isXXSsize ? 10 : 12} md={12} ref={this.sidebarHeaderRef}>
-                  <div 
+                  <div
                     style={{
                       fontSize: '1rem',
                       fontWeight: 600,
@@ -114,28 +117,32 @@ export default class DashboardRoute extends Component {
                   </Button>
                 </Col>
               </Row>
+              {/* 사이드바 본문 */}
+              <Row>
+                <Col>
+                  {
+                    isXXSsize
+                      ? (
+                        <Collapse in={this.state.sidebarOpen} timeout={0}>
+                          <div id="sidebar-collapse" className="Dashboardroute-sidebar-body">
+                            <Sidebar guild={guild} />
+                          </div>
+                        </Collapse>
+                      )
+                      : (
+                        <div className="Dashboardroute-sidebar-body" style={{
+                          height: `calc(100vh - ${this.sidebarHeaderRef.current?.clientHeight}px - 90px)`
+                        }}>
+                          <Sidebar guild={guild} />
+                        </div>
+                      )
+                  }
+                </Col>
+              </Row>
             </Container>
-
-
-            {
-              isXXSsize
-                ? (
-                  <Collapse in={this.state.sidebarOpen} timeout={0}>
-                    <div id="sidebar-collapse" className="Dashboardroute-sidebar-body">
-                      <Sidebar guild={guild} />
-                    </div>
-                  </Collapse>
-                )
-                : (
-                  <div className="Dashboardroute-sidebar-body" style={{
-                    height: `calc(100vh - ${this.sidebarHeaderRef.current?.clientHeight}px - 90px)`
-                  }}>
-                    <Sidebar guild={guild} />
-                  </div>
-                )
-            } 
-
           </Col>
+
+          {/* 대시보드 본문 */}
           <Col xl={10} lg={9} md={9} sm={8} className="Dashboardroute-body">
             {
               this.state.fetchDone
