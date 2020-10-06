@@ -72,16 +72,16 @@ export default class DashboardRoute extends Component {
 
   render() {
     const guild = this.state.guild
-    const isXXSsize = this.state.winWidth < 576
+    const isXXSsize = this.sidebarHeaderRef.current?.clientHeight ? this.state.winWidth < 576 : true
     console.log(this.sidebarHeaderRef.current?.clientHeight)
 
     return (
       <Container fluid>
         <Row>
           <Col xl={2} lg={3} md={3} sm={4} className="Dashboardroute-sidebar">
-            <Container className="pl-0 pr-0 pb-2">
+            <Container className="pl-0 pr-0 pb-1" id="sidebar-header">
               <Row>
-                <Col xs={isXXSsize ? 10 : 12} md={12} id="sidebar-header" ref={this.sidebarHeaderRef}>
+                <Col xs={isXXSsize ? 10 : 12} md={12} ref={this.sidebarHeaderRef}>
                   <div 
                     style={{
                       fontSize: '1rem',
@@ -99,13 +99,19 @@ export default class DashboardRoute extends Component {
                     {guild?.name}
                   </div>
                 </Col>
-                <Col xs={isXXSsize ? 2 : 0} className="text-center pl-1 d-sm-none d-md-none d-lg-none d-xl-none">
+                <Col xs={isXXSsize ? 2 : 0} className="text-center my-auto pl-1 d-sm-none d-md-none d-lg-none d-xl-none">
                   <Button
+                    size="sm"
                     variant="secondary"
                     aria-controls="sidebar-collapse"
                     aria-expanded={this.state.sidebarOpen}
                     onClick={() => this.setState({ sidebarOpen: !this.state.sidebarOpen })}
-                  > </Button>
+                    style={{
+                      fontSize: '9pt'
+                    }}
+                  >
+                    메뉴
+                  </Button>
                 </Col>
               </Row>
             </Container>
@@ -122,7 +128,7 @@ export default class DashboardRoute extends Component {
                 )
                 : (
                   <div className="Dashboardroute-sidebar-body" style={{
-                    height: `calc(100vh - ${this.sidebarHeaderRef.current?.clientHeight}px - 100px)`
+                    height: `calc(100vh - ${this.sidebarHeaderRef.current?.clientHeight}px - 90px)`
                   }}>
                     <Sidebar guild={guild} />
                   </div>

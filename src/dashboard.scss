@@ -77,11 +77,10 @@
 .Dashboardroute-sidebar-body {
     height: 0; // 모바일 사이즈가 아닌 경우 사이드바 본문의 높이는 React의 render에서 정합니다.
     position: sticky !important;
-    top: 72px !important;
+    top: 120px !important;
     overflow: auto;
     display: flex;
     @include media-breakpoint-up(xs) {
-        top: 100px;
         height: 20vh;
         .nav-link {
             padding-bottom: 0.25rem !important;
@@ -94,4 +93,11 @@
             padding-bottom: 0.25rem !important;
         }
     }
+}
+
+#sidebar-header {
+    position: sticky !important;
+    bottom: 100vh;
+    top: 72px !important;
+    overflow: hidden;
 }
