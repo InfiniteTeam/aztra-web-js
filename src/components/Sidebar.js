@@ -12,21 +12,6 @@ export default class Main extends Component {
             paddingRight: 0,
           }}
         >
-          <Nav.Item style={{
-            fontSize: '1rem',
-            fontWeight: 600,
-            paddingBottom: 10,
-            paddingLeft: 2,
-            display: 'flex',
-            alignItems: 'center'
-          }}>
-            <img 
-              alt="" 
-              src={`https://cdn.discordapp.com/icons/${guild?.id}/${guild?.icon}.png`} 
-              style={{ maxHeight: 40, marginRight: 15, borderRadius: '70%' }} 
-            />
-            {guild?.name}
-          </Nav.Item>
           <Nav.Item>
             <Nav.Link>메인</Nav.Link>
           </Nav.Item>

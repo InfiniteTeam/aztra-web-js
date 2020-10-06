@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import React, { Component, createRef } from 'react';
+import { Container, Row, Col, Collapse, Button } from 'react-bootstrap';
 import { Route, Switch } from 'react-router-dom';
 import * as Dashboard from '../pages/dashboard'
 import { Sidebar } from '.'
@@ -14,8 +14,13 @@ export default class DashboardRoute extends Component {
     super(props)
     this.state = {
       guild: null,
-      fetchDone: false
+      fetchDone: false,
+      sidebarOpen: false,
+      winWidth: window.innerWidth,
+      winHeight: window.innerHeight
     }
+
+    this.sidebarHeaderRef = createRef()
   }
 
   getGuild = async token => {
@@ -43,6 +48,8 @@ export default class DashboardRoute extends Component {
   }
 
   componentDidMount() {
+    window.addEventListener('resize', this.updateWindowState)
+
     const token = localStorage.getItem('token')
     if (token) {
       this.getGuild(token)
@@ -52,24 +59,86 @@ export default class DashboardRoute extends Component {
     }
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowState)
+  }
+
+  updateWindowState = () => {
+    this.setState({
+      winWidth: window.innerWidth,
+      winHeight: window.innerHeight
+    })
+  }
+
   render() {
+    const guild = this.state.guild
+    const isXXSsize = this.state.winWidth < 576
+    console.log(this.sidebarHeaderRef.current?.clientHeight)
+
     return (
       <Container fluid>
         <Row>
-          <Col xl={2} lg={3} md={3} sm={3} className="Dashboardroute-sidebar">
-            <div className="Dashboardroute-sidebar-body">
-              <Sidebar guild={this.state.guild}/>
-            </div>
-          </Col>
-          <Col xl={10} lg={9} md={9} sm={9} className="Dashboardroute-body">
-            {
-              this.state.fetchDone 
-                ? <Switch>
-                    <Route exact path="/dashboard/:serverid(\d+)" render={
-                      () => <Dashboard.Main guild={this.state.guild} />}
+          <Col xl={2} lg={3} md={3} sm={4} className="Dashboardroute-sidebar">
+            <Container className="pl-0 pr-0 pb-2">
+              <Row>
+                <Col xs={isXXSsize ? 10 : 12} md={12} id="sidebar-header" ref={this.sidebarHeaderRef}>
+                  <div 
+                    style={{
+                      fontSize: '1rem',
+                      fontWeight: 600,
+                      paddingLeft: 2,
+                      display: 'flex',
+                      alignItems: 'center'
+                    }}
+                  >
+                    <img
+                      alt=""
+                      src={`https://cdn.discordapp.com/icons/${guild?.id}/${guild?.icon}.png`}
+                      style={{ maxHeight: 40, marginRight: 15, borderRadius: '70%' }}
                     />
-                    <Route component={NotFound} />
-                  </Switch>
+                    {guild?.name}
+                  </div>
+                </Col>
+                <Col xs={isXXSsize ? 2 : 0} className="text-center pl-1 d-sm-none d-md-none d-lg-none d-xl-none">
+                  <Button
+                    variant="secondary"
+                    aria-controls="sidebar-collapse"
+                    aria-expanded={this.state.sidebarOpen}
+                    onClick={() => this.setState({ sidebarOpen: !this.state.sidebarOpen })}
+                  > </Button>
+                </Col>
+              </Row>
+            </Container>
+
+
+            {
+              isXXSsize
+                ? (
+                  <Collapse in={this.state.sidebarOpen} timeout={0}>
+                    <div id="sidebar-collapse" className="Dashboardroute-sidebar-body">
+                      <Sidebar guild={guild} />
+                    </div>
+                  </Collapse>
+                )
+                : (
+                  <div className="Dashboardroute-sidebar-body" style={{
+                    height: `calc(100vh - ${this.sidebarHeaderRef.current?.clientHeight}px - 100px)`
+                  }}>
+                    <Sidebar guild={guild} />
+                  </div>
+                )
+            } 
+
+          </Col>
+          <Col xl={10} lg={9} md={9} sm={8} className="Dashboardroute-body">
+            {
+              this.state.fetchDone
+                ? <Switch>
+                  <Route exact path="/dashboard/:serverid(\d+)" render={
+                    () => <Dashboard.Main guild={guild} />}
+                  />
+                  <Route component={NotFound} />
+                </Switch>
                 : null
             }
           </Col>
