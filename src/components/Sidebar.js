@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { Nav } from 'react-bootstrap';
 
 export default class Main extends Component {
@@ -13,10 +14,10 @@ export default class Main extends Component {
           }}
         >
           <Nav.Item>
-            <Nav.Link>메인</Nav.Link>
+            <Nav.Link as={Link} to={`/dashboard/${this.props.guild?.id}`}>메인</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>환영 메시지</Nav.Link>
+            <Nav.Link as={Link} to={`/dashboard/${this.props.guild?.id}/greeting`}>환영 메시지</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link>봇 세부 권한 관리</Nav.Link>

@@ -8,6 +8,7 @@ import axios from 'axios'
 import urljoin from 'url-join'
 import oauth2 from '../datas/oauth'
 import { Permissions } from 'discord.js'
+import swal from '@sweetalert/with-react'
 
 export default class DashboardRoute extends Component {
   constructor(props) {
@@ -74,6 +75,24 @@ export default class DashboardRoute extends Component {
     const guild = this.state.guild
     const isXXSsize = this.sidebarHeaderRef.current?.clientHeight ? this.state.winWidth < 576 : true
     console.log(this.sidebarHeaderRef.current?.clientHeight)
+
+    if (this.state.fetchDone && !guild) {
+      swal(
+        <div>
+          <h2>서버를 찾을 수 없습니다!</h2>
+          <p className="px-3">
+            사용자가 들어가있지 않는 서버이거나 존재하지 않는 서버입니다
+        </p>
+          <Button variant="danger" href="/servers">서버 목록으로</Button>
+        </div>,
+        {
+          icon: "error",
+          button: false,
+          closeOnClickOutside: false,
+          closeOnEsc: false
+        }
+      )
+    }
 
     return (
       <Container fluid>
@@ -147,8 +166,13 @@ export default class DashboardRoute extends Component {
             {
               this.state.fetchDone
                 ? <Switch>
-                  <Route exact path="/dashboard/:serverid(\d+)" render={
-                    () => <Dashboard.Main guild={guild} />}
+                  <Route exact path={this.props.match.url} render={
+                    () => <Dashboard.Main guild={guild} />
+                  }
+                  />
+                  <Route exact path={`${this.props.match.url}/greeting`} render={
+                    () => <Dashboard.Greeting guild={guild} />
+                  }
                   />
                   <Route component={NotFound} />
                 </Switch>

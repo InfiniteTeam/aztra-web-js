@@ -51,7 +51,14 @@
 
 .Dashboardroute-body {
     color: white;
-    padding: 30px 30px 3000px 30px;
+    padding: 50px 80px 3000px 80px;
+    .card {
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+    }
+    .dashboard-section {
+        margin-bottom: 30px !important;
+    }
 }
 
 .Dashboardroute-sidebar {
@@ -75,7 +82,7 @@
 }
 .Dashboardroute-sidebar-body {
     margin-top: 0.5rem;
-    height: 0; // 모바일 사이즈가 아닌 경우 사이드바 본문의 높이는 React의 render에서 정합니다.
+    height: 20vh; // 모바일 사이즈가 아닌 경우 사이드바 본문의 높이는 React의 render에서 정합니다.
     overflow: auto;
     display: flex;
     @include media-breakpoint-up(xs) {
@@ -98,4 +105,10 @@
     bottom: 100vh;
     top: 72px !important;
     overflow: hidden;
+}
+
+.lines {
+    p{
+        margin-bottom: unset;
+    }
 }
