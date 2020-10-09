@@ -44,7 +44,7 @@ export default class Servers extends Component {
   render() {
     const guild_cards = this.state.guilds
       .filter(one => {
-        let perms = new Permissions(one.permissions)
+        let perms = new Permissions(Number(one.permissions))
         return perms.has(Permissions.FLAGS.ADMINISTRATOR)
       })
       .map((one, index) => (

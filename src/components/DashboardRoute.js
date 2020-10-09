@@ -33,7 +33,7 @@ export default class DashboardRoute extends Component {
       .then(res => {
         let guild = res.data
           .filter(one => {
-            let perms = new Permissions(one.permissions)
+            let perms = new Permissions(Number(one.permissions))
             return perms.has(Permissions.FLAGS.ADMINISTRATOR)
           })
           .find(one => one.id === this.props.match.params.serverid)
