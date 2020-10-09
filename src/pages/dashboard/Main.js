@@ -14,8 +14,8 @@ export default class Main extends Component {
         </Row>
         <Row className="dashboard-section">
           <Col className="col-auto">
-            <Card className="Dashboard-card flex-row" bg="dark">
-              <Card.Body>
+            <Card className="Dashboard-card flex-md-row" bg="dark">
+              <Card.Body className="text-center text-md-left">
                 <Card.Img
                   src={`https://cdn.discordapp.com/icons/${guild?.id}/${guild?.icon}.png`} style={{
                     height: 120,
@@ -23,11 +23,10 @@ export default class Main extends Component {
                   }}
                 />
               </Card.Body>
-              <Card.Body style={{
-                paddingLeft: 'unset',
-                paddingRight: 25
+              <Card.Body className="pl-md-0 pr-md-5" style={{
+                
               }}>
-                <Card.Title className="font-weight-bold" style={{
+                <Card.Title className="font-weight-bold text-center text-md-left" style={{
                   fontFamily: 'NanumSquare'
                 }}>
                   {guild?.name}
@@ -49,7 +48,7 @@ export default class Main extends Component {
         <Row className="justify-content-between">
           <h3>알림 센터</h3>
           <div>
-            <Button variant="secondary">더 보기</Button>
+            <Button variant="secondary" size="sm">더 보기</Button>
           </div>
         </Row>
         <Row className="dashboard-section">

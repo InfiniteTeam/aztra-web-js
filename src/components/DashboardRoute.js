@@ -73,6 +73,8 @@ export default class DashboardRoute extends Component {
 
   render() {
     const guild = this.state.guild
+    const wsSupport = 'WebSocket' in window || 'MozWebSocket' in window
+
     const isXXSsize = this.sidebarHeaderRef.current?.clientHeight ? this.state.winWidth < 576 : true
     console.log(this.sidebarHeaderRef.current?.clientHeight)
 
@@ -82,7 +84,7 @@ export default class DashboardRoute extends Component {
           <h2>서버를 찾을 수 없습니다!</h2>
           <p className="px-3">
             사용자가 들어가있지 않는 서버이거나 존재하지 않는 서버입니다
-        </p>
+          </p>
           <Button variant="danger" href="/servers">서버 목록으로</Button>
         </div>,
         {
@@ -91,6 +93,17 @@ export default class DashboardRoute extends Component {
           closeOnClickOutside: false,
           closeOnEsc: false
         }
+      )
+    }
+
+    if (!wsSupport) {
+      swal(
+        <div>
+          <h2>지원하지 않는 브라우저</h2>
+          <p className="px-3">
+            죄송합니다. 사용하시는 브라우저는 WebSocket 연결을 지원하지 않는것 같습니다. 대시보드 서비스를 이용하시려면 
+          </p>
+        </div>
       )
     }
 
